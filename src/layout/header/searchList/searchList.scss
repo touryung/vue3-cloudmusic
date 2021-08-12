@@ -1,0 +1,145 @@
+.search {
+  position: relative;
+
+  .search-input {
+    box-sizing: border-box;
+    width: 240px;
+    padding: 12px 30px;
+    padding-left: 30px;
+    font-size: 12px;
+    border-radius: 20px;
+    background: #e13e3e;
+    color: #fff;
+  }
+
+  .icon-search {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 13px;
+    color: #e1e2e3;
+  }
+}
+
+.list-container {
+  position: absolute;
+  left: -24%;
+  width: 360px;
+  z-index: 666;
+  background: #fff;
+  border-radius: 10px;
+
+  .hot-list {
+    max-height: 400px;
+    margin: 10px 0;
+    overflow: auto;
+    overflow-x: hidden;
+
+    .title {
+      height: 40px;
+      line-height: 40px;
+      font-size: 15px;
+      color: #666;
+      text-indent: 2rem;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      cursor: pointer;
+
+      &:hover {
+        background: #f3f3f3;
+      }
+
+      .index {
+        flex: 0 0 50px;
+        font-size: 15px;
+        color: #cfcfcf;
+        text-align: center;
+
+        &.red {
+          color: red;
+        }
+      }
+
+      .desc {
+        flex: 1;
+
+        .header {
+          .word {
+            font-size: 13px;
+            color: #333;
+            margin-right: 10px;
+
+            &.bold {
+              font-weight: bold;
+            }
+          }
+
+          > img {
+            height: 12px;
+            margin-right: 10px;
+          }
+
+          .score {
+            font-family: serif;
+            font-size: 12px;
+            color: #ccc;
+          }
+        }
+
+        .content {
+          margin-top: 8px;
+          font-size: 12px;
+          color: #bfbfbf;
+        }
+      }
+    }
+  }
+
+  .search-list {
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+    color: #333;
+
+    .title {
+      height: 28px;
+      padding: 0 8px;
+      line-height: 28px;
+      color: #666;
+
+      > span {
+        color: #f73131;
+      }
+    }
+
+    .sub-title {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      line-height: 28px;
+      background: #f4f4f4;
+
+      .iconfont {
+        margin-right: 4px;
+        font-size: 18px;
+      }
+    }
+
+    .search-item {
+      height: 28px;
+      line-height: 28px;
+      padding: 0 5px;
+      text-indent: 2rem;
+      @include ellipsis();
+      cursor: pointer;
+
+      &:hover {
+        background: #f1f1f1;
+      }
+    }
+  }
+}

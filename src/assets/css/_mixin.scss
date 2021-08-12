@@ -1,0 +1,19 @@
+@mixin ellipsis() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin maxWidthEllipsis($width) {
+  max-width: $width;
+  @include ellipsis();
+}
+
+@mixin multipleNoWrap($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical; // 设置伸缩盒对象的子元素的排列方式
+  -webkit-line-clamp: $line; // 限制在一个块元素中显示的文本的行数
+  width: 100%;
+  overflow: hidden;
+  word-break: break-all; // 任意位置的换行，包括单词
+}
