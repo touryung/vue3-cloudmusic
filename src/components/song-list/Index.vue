@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item list-header">
+  <div class="list-item list-header" v-if="showTitle">
     <span class="item-index" />
     <div class="item-options" />
     <div class="item-title">音乐标题</div>
@@ -36,7 +36,7 @@
           }}
         </span>
       </span>
-      <span class="item-album">{{ item.album.name }}</span>
+      <span class="item-album" v-if="showTitle">{{ item.album.name }}</span>
       <span class="item-duration">{{ item.durationStr }}</span>
     </li>
   </ul>
@@ -75,7 +75,7 @@ export default defineComponent({
   color: #888;
 
   .item-index {
-    flex: 0 0 4%;
+    flex: 0 0 35px;
     text-align: right;
   }
 

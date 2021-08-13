@@ -6,6 +6,8 @@ export const COMMENT_LIMIT = 60;
 export const SINGER_LIMIT = 60;
 // MV 数量
 export const MVLIST_LIMIT = 105;
+// 歌手详情专辑数量
+export const SINGER_ALBUM_LIMIT = 5;
 
 // 歌手区域
 export const SINGER_AREAS: Array<SingerSelectArgs> = [

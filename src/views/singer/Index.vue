@@ -91,9 +91,11 @@ import { SINGER_AREAS, SINGER_TYPES, ALPHA_TYPES } from "@/utils/constant";
 import { getSingerListData } from "@/api/singer/index";
 import { lazyLoad, debounce } from "@/utils/utils";
 import { on, off } from "@/utils/dom";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
+    const router = useRouter();
     const isLoading = ref<boolean>(false);
     const singerAreas = ref<SingerSelectArgs[]>(SINGER_AREAS);
     const singerTypes = ref<SingerSelectArgs[]>(SINGER_TYPES);
@@ -137,7 +139,7 @@ export default defineComponent({
               conditions.more,
               getCurrentSingerList
             ),
-          1000
+          300
         )
       );
     });
@@ -152,7 +154,7 @@ export default defineComponent({
       getCurrentSingerList();
     };
 
-    const handleShowDetail = (id: number) => alert(`歌手${id}详情`);
+    const handleShowDetail = (id: number) => router.push(`/singer/${id}`);
 
     return {
       isLoading,

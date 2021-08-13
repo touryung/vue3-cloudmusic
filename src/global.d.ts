@@ -34,7 +34,6 @@ interface Song {
   artists: Artist[];
   album?: Album;
   sq?: boolean;
-  duration?: number;
   durationStr?: string;
   mvId?: number;
 }
@@ -45,7 +44,6 @@ interface Mv {
   picUrl: string;
   artistId: number;
   artistName?: string;
-  duration?: number;
   durationStr?: string;
   playCount?: number;
   [propName: string]: any;
@@ -94,3 +92,13 @@ interface Comment {
   likedCount: number;
   beReplied: CommentReplied[];
 }
+
+type Album = {
+  id: number;
+  name: string;
+  picUrl?: string;
+  songs?: Song[];
+  isTop?: boolean;
+  publishTime?: string;
+  [propName: string]: any;
+};

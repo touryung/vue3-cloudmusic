@@ -92,6 +92,6 @@ export const lazyLoad = (
   const scrollHeight = dom.scrollHeight;
   // 可见区域高度
   const clientHeight = dom.clientHeight;
-  // 滚轴距顶部距离 + 视窗高度 > 整个高度 - 10
-  if (scrollTop + clientHeight > scrollHeight - 10 && more) callback();
+  // 滚轴距顶部距离 + 视窗高度 > 整个高度 - 视窗高度
+  if (scrollTop > scrollHeight - 2 * clientHeight && more) callback();
 };

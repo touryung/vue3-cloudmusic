@@ -10,6 +10,7 @@ const PlaylistDetial = () => import("@/views/playlist-detail/Index.vue");
 const HighQualityList = () => import("@/views/highquality-list/Index.vue");
 const AlbumDetial = () => import("@/views/album-detail/Index.vue");
 const MvList = () => import("@/views/mvlist/Index.vue");
+const SingerDetail = () => import("@/views/singer-detail/Index.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -63,6 +64,12 @@ const routes: Array<RouteRecordRaw> = [
         path: "/mvList",
         name: "mvList",
         component: MvList,
+        meta: { isTabCover: true },
+      },
+      {
+        path: "/singer/:id",
+        name: "singerDetail",
+        component: SingerDetail,
         meta: { isTabCover: true },
       },
     ],

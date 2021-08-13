@@ -118,8 +118,16 @@ export default defineComponent({
     // 响应选项卡点击
     const handleTabClick = (e: Event, navItem: NavItem, tabName: string) => {
       setCurrentName(tabName);
-      sessionStorage.setItem("playlistTab", tabName);
+      setStorage(tabName);
       context.emit("tab-click", e, navItem, tabName);
+    };
+
+    const setStorage = (tabName: string) => {
+      if (["songList", "songComment"].includes(tabName)) {
+        sessionStorage.setItem("playlistTab", tabName);
+      } else if (["album", "mv", "desc"].includes(tabName)) {
+        sessionStorage.setItem("singerDetailTab", tabName);
+      }
     };
 
     // 给 pane 提供当前标签页以及存储方法
