@@ -1,6 +1,7 @@
 import { COMMENT_LIMIT } from "@/utils/constant";
+import { convertComment } from "../convertComment";
 import { getRequest } from "../request";
-import { convertAlbumDetail, convertAlbumComment } from "./convert";
+import { convertAlbumDetail } from "./convert";
 
 const REQUEST_URL = {
   detail: "/album",
@@ -34,5 +35,5 @@ export const getAlbumCommentData = (id: number, currentPage) => {
     id,
     limit: COMMENT_LIMIT,
     offset: (currentPage - 1) * COMMENT_LIMIT,
-  }).then(convertAlbumComment);
+  }).then(convertComment);
 };

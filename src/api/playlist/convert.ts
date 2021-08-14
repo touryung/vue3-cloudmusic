@@ -1,7 +1,7 @@
 import { formatDate, formatDuration, translateCount } from "@/utils/utils";
-import { COMMENT_LIMIT, PLAYLIST_LIMIT } from "@/utils/constant";
+import { PLAYLIST_LIMIT } from "@/utils/constant";
 import { AxiosResponse } from "axios";
-import { getSongsData } from "../common";
+import { getSongsData } from "./index";
 
 export const convertCategory = (res: AxiosResponse) => {
   return res.data;
@@ -77,77 +77,5 @@ export const convertPlaylistDetail = async (res: AxiosResponse) => {
     createTime: formatDate(createTime, "YYYY-MM-dd"),
     subDescription: description?.split("\n")[0] || "",
     description: description?.split("\n").slice(1).join("<br/>") || "",
-  };
-};
-
-export const convertPlaylistComment = (res: AxiosResponse) => {
-  let { hotComments, comments } = res.data;
-  const { total } = res.data;
-
-  // 转换热门评论
-  if (hotComments && hotComments.length > 0) {
-    hotComments = hotComments.map((comment: any) => {
-      let beReplied: CommentReplied[] = [];
-      // 转换当前热门评论回复
-      if (comment.beReplied.length > 0) {
-        beReplied = comment.beReplied.map((item: any) => ({
-          id: item.user.userId,
-          name: item.user.nickname,
-          commentId: item.commentId,
-          avatarUrl: item.user.avatarUrl,
-          time: formatDate(item.time, "YYYY年MM月dd日 hh:mm"),
-          likedCount: item.likedCount,
-          content: item.content,
-        }));
-      }
-
-      return {
-        id: comment.user.userId,
-        name: comment.user.nickname,
-        commentId: comment.commentId,
-        avatarUrl: comment.user.avatarUrl,
-        time: formatDate(comment.time, "YYYY年MM月dd日 hh:mm"),
-        likedCount: comment.likedCount,
-        content: comment.content,
-        beReplied,
-      };
-    });
-  }
-  // 转换普通评论
-  comments = comments.map((comment: any) => {
-    let beReplied: CommentReplied[] = [];
-    // 转换当前普通评论回复
-    if (comment.beReplied.length > 0) {
-      beReplied = comment.beReplied.map((item: any) => ({
-        id: item.user.userId,
-        name: item.user.nickname,
-        commentId: item.commentId,
-        avatarUrl: item.user.avatarUrl,
-        time: formatDate(item.time, "YYYY年MM月dd日 hh:mm"),
-        likedCount: item.likedCount,
-        content: item.content,
-      }));
-    }
-
-    return {
-      id: comment.user.userId,
-      name: comment.user.nickname,
-      commentId: comment.commentId,
-      avatarUrl: comment.user.avatarUrl,
-      time: formatDate(comment.time, "YYYY年MM月dd日 hh:mm"),
-      likedCount: comment.likedCount,
-      content: comment.content,
-      beReplied,
-    };
-  });
-
-  return {
-    hotComments: hotComments || [],
-    comments,
-    total,
-    pageCount:
-      total % COMMENT_LIMIT
-        ? Math.floor(total / COMMENT_LIMIT) + 1
-        : total / COMMENT_LIMIT,
   };
 };

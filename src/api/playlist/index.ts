@@ -1,10 +1,10 @@
 import { PLAYLIST_LIMIT, COMMENT_LIMIT } from "@/utils/constant";
+import { convertComment } from "../convertComment";
 import { getRequest } from "../request";
 import {
   convertCategory,
   convertPlaylists,
   convertPlaylistDetail,
-  convertPlaylistComment,
 } from "./convert";
 
 const REQUEST_URL = {
@@ -15,6 +15,7 @@ const REQUEST_URL = {
 
   detail: "/playlist/detail",
   comment: "/comment/playlist",
+  songDetail: "/song/detail",
 };
 
 export interface PlaylistDetail {
@@ -67,5 +68,9 @@ export const getPlaylistCommentData = (id: number, currentPage: number) => {
     id,
     limit: COMMENT_LIMIT,
     offset: (currentPage - 1) * COMMENT_LIMIT,
-  }).then(convertPlaylistComment);
+  }).then(convertComment);
+};
+
+export const getSongsData = (ids: string) => {
+  return getRequest(REQUEST_URL.songDetail, { ids });
 };
