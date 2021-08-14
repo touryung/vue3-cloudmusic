@@ -65,6 +65,8 @@ export default defineComponent({
   align-items: center;
   background: #ec4141;
   color: #f2f3f4;
+  box-sizing: border-box;
+  padding: 0 20px;
 
   .header-left,
   .header-right {
@@ -73,8 +75,6 @@ export default defineComponent({
   }
 
   .header-left {
-    padding-left: 20px;
-
     .header-title {
       flex: 0 0 200px;
       display: flex;
@@ -107,7 +107,6 @@ export default defineComponent({
 
   .header-right {
     justify-content: flex-end;
-    padding-right: 20px;
 
     .header-user {
       display: flex;
