@@ -17,6 +17,7 @@
         <router-view @pagin-change="handlePaginChange" />
       </div>
     </main>
+    <router-view name="mvDetail" />
   </div>
 </template>
 

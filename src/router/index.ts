@@ -11,6 +11,7 @@ const HighQualityList = () => import("@/views/highquality-list/Index.vue");
 const AlbumDetial = () => import("@/views/album-detail/Index.vue");
 const MvList = () => import("@/views/mvlist/Index.vue");
 const SingerDetail = () => import("@/views/singer-detail/Index.vue");
+const MvDetail = () => import("@/views/mv-detail/Index.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -71,6 +72,14 @@ const routes: Array<RouteRecordRaw> = [
         name: "singerDetail",
         component: SingerDetail,
         meta: { isTabCover: true },
+      },
+      // 渲染在命名路由出口
+      {
+        path: "/mv/:id",
+        name: "mvDetail",
+        components: {
+          mvDetail: MvDetail,
+        },
       },
     ],
   },

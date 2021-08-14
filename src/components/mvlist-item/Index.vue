@@ -28,7 +28,7 @@ export default defineComponent({
   setup(props) {
     const router = useRouter();
     const handleShowDetail = () => {
-      router.push(`/video/${(props.mvItem as Mv).id}`);
+      router.push(`/mv/${(props.mvItem as Mv).id}`);
     };
 
     return {

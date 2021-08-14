@@ -20,7 +20,9 @@ export const scrollTop = (el: Ref<HTMLElement>, endTop = 0) => {
 
     // 还未回到指定位置
     if (progress < 1) {
-      el.value.scrollTop = startValue * (1 - easeInOutCubic(progress));
+      el.value.scrollTop =
+        (startValue - endTop) * (1 - easeInOutCubic(progress));
+
       // 递归执行
       rAF(frameFunc);
     } else {
