@@ -67,6 +67,7 @@ export default defineComponent({
   color: #f2f3f4;
   box-sizing: border-box;
   padding: 0 20px;
+  z-index: 100;
 
   .header-left,
   .header-right {
@@ -88,6 +89,7 @@ export default defineComponent({
       .header-title-name {
         align-self: center;
         font-size: 18px;
+        cursor: pointer;
       }
     }
 

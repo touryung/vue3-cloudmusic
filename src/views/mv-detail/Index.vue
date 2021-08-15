@@ -224,20 +224,20 @@ export default defineComponent({
   box-sizing: border-box;
   background: #fff;
   overflow: auto;
-  z-index: 3;
+  z-index: 50;
   user-select: none;
 
   .detail-left {
     flex: 0 0 640px;
 
     .left-title {
+      display: inline-flex;
+      align-items: center;
       height: 60px;
       line-height: 60px;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      display: flex;
-      align-items: center;
 
       .iconfont {
         font-size: 20px;

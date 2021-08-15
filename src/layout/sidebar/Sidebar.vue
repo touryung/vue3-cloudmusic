@@ -1,7 +1,9 @@
 <template>
   <aside class="sidebar">
     <ul class="sidebar-menu">
-      <li class="sidebar-menu-item active">发现音乐</li>
+      <li class="sidebar-menu-item active" @click="handleFoundClick">
+        发现音乐
+      </li>
       <li class="sidebar-menu-item">播客</li>
       <li class="sidebar-menu-item">视频</li>
       <li class="sidebar-menu-item unread">
@@ -40,6 +42,19 @@
   </aside>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+
+export default defineComponent({
+  setup() {
+    const router = useRouter();
+    const handleFoundClick = () => router.push("/");
+    return { handleFoundClick };
+  },
+});
+</script>
+
 <style lang="scss" scoped>
 .sidebar {
   position: fixed;
@@ -50,6 +65,8 @@
   padding: 10px;
   border-right: 1px solid #efefef;
   box-sizing: border-box;
+  background: #fff;
+  z-index: 10;
 
   .sidebar-menu {
     .sidebar-menu-item {
