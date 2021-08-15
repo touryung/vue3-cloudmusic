@@ -100,7 +100,7 @@ export default defineComponent({
 
       const pagerArray = [];
 
-      if (!showPrevMore) {
+      if (!showPrevMore && showNextMore) {
         // 不显示前省略号时除去第一个和最后一个按钮，从前开始算
         for (let i = 2; i < pagerCount; i++) {
           pagerArray.push(i);
@@ -115,6 +115,11 @@ export default defineComponent({
         // 两个都显示就前后各取一半: 9, 8 -> 3
         const radius = Math.floor((pagerCount - 2) / 2);
         for (let i = currentPage - radius; i <= currentPage + radius; i++) {
+          pagerArray.push(i);
+        }
+      } else {
+        // 前后都不显示的情况，也就是总页数小于按钮数
+        for (let i = 2; i < totalPageCount; i++) {
           pagerArray.push(i);
         }
       }
