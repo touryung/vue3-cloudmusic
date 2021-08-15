@@ -40,11 +40,13 @@
       <i class="iconfont icon-right" />
     </h1>
     <div class="recommend-mvlist">
-      <MvlistItem
+      <div
+        class="mvlist-item"
         v-for="item in mvList.slice(0, 3)"
         :key="item.id"
-        :mvItem="item"
-      />
+      >
+        <MvlistItem :mvItem="item" />
+      </div>
     </div>
   </div>
 </template>
@@ -143,5 +145,11 @@ export default defineComponent({
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 10px;
+}
+
+.recommend-mvlist {
+  .mvlist-item {
+    flex: 0 0 32%;
+  }
 }
 </style>
