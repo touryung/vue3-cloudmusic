@@ -127,6 +127,10 @@ export default defineComponent({
         sessionStorage.setItem("playlistTab", tabName);
       } else if (["album", "mv", "desc"].includes(tabName)) {
         sessionStorage.setItem("singerDetailTab", tabName);
+      } else if (
+        ["songs", "albums", "playlists", "artists", "videos"].includes(tabName)
+      ) {
+        sessionStorage.setItem("searchDetailTab", tabName);
       }
     };
 

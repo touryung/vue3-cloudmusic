@@ -12,6 +12,7 @@ const AlbumDetial = () => import("@/views/album-detail/Index.vue");
 const MvList = () => import("@/views/mvlist/Index.vue");
 const SingerDetail = () => import("@/views/singer-detail/Index.vue");
 const MvDetail = () => import("@/views/mv-detail/Index.vue");
+const SearchDetail = () => import("@/views/search-detail/Index.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -80,6 +81,12 @@ const routes: Array<RouteRecordRaw> = [
         components: {
           mvDetail: MvDetail,
         },
+      },
+      {
+        path: "/search/:keywords",
+        name: "searchDetail",
+        component: SearchDetail,
+        meta: { isTabCover: true },
       },
     ],
   },

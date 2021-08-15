@@ -89,3 +89,13 @@ export const MV_ORDERS = [
   { label: "最新", value: "最新" },
   { label: "最热", value: "最热" },
 ];
+
+// 搜索详情分类
+export const SEARCH_TYPE = {
+  songs: { type: 1, resName: "首歌曲", limit: 100 },
+  artists: { type: 100, resName: "位歌手", limit: 30 },
+  albums: { type: 10, resName: "张专辑", limit: 30 },
+  videos: { type: 1014, resName: "个视频", limit: 24 },
+  playlists: { type: 1000, resName: "个歌单", limit: 20 },
+  // users: { type: 1002, resName: "位用户", limit: 30 },
+};
