@@ -19,6 +19,7 @@ export const convertTopSongs = (res: AxiosResponse) => {
         id: item.id,
         name: item.name,
       })),
+      duration: duration,
       durationStr: formatDuration(duration),
       sq: album.status === 0,
     };

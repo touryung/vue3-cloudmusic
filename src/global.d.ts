@@ -34,6 +34,7 @@ interface Song {
   artists: Artist[];
   album?: Album;
   sq?: boolean;
+  duration?: number;
   durationStr?: string;
   mvId?: number;
 }

@@ -41,6 +41,7 @@ export const convertNewMusic = (res: AxiosResponse) => {
         id: newMusic.id,
         name: newMusic.name,
       })),
+      duration: duration,
       durationStr: formatDuration(duration),
       sq: album.status === 0,
     };

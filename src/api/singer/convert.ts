@@ -36,6 +36,7 @@ export const convertSingerInfo = (res: AxiosResponse) => {
     artists: song.ar.map((item: Artist) => ({ id: item.id, name: item.name })),
     album: { id: song.al.id, name: song.al.name },
     sq: song.st === 1,
+    duration: song.dt,
     durationStr: formatDuration(song.dt),
     mvId: song.mv,
   }));
@@ -70,6 +71,7 @@ export const convertAlbumSongs = (res: AxiosResponse) => {
     artists: song.ar.map((item: Artist) => ({ id: item.id, name: item.name })),
     album: { id: song.al.id, name: song.al.name },
     sq: song.st === 1,
+    duration: song.dt,
     durationStr: formatDuration(song.dt),
     mvId: song.mv,
   }));
@@ -83,6 +85,7 @@ export const convertSingerMvs = (res: AxiosResponse) => {
     id: mv.id,
     name: mv.name,
     picUrl: mv.imgurl16v9,
+    duration: mv.duration,
     durationStr: formatDuration(mv.duration),
     playCount: translateCount(mv.playCount),
   }));

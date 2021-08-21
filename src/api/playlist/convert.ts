@@ -56,6 +56,7 @@ export const convertPlaylistDetail = async (res: AxiosResponse) => {
     artists: song.ar.map((item: Artist) => ({ id: item.id, name: item.name })),
     album: { id: song.al.id, name: song.al.name },
     sq: song.st === 0,
+    duration: song.dt,
     durationStr: formatDuration(song.dt),
     mvId: song.mv,
   }));

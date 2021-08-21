@@ -62,6 +62,7 @@ export const convertSearchInfo = (res: AxiosResponse, type: string) => {
         })),
         album: { id: song.al.id, name: song.al.name },
         sq: song.st === 0,
+        duration: song.dt,
         durationStr: formatDuration(song.dt),
         mvId: song.mv,
       }));
