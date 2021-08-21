@@ -1,0 +1,23 @@
+.lyrics {
+  height: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  > li {
+    width: 88%;
+    // 20 + 13 * 1.5 ≈ 40 = lineHeight
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #666;
+    white-space: pre-wrap;
+    transition: all 0.2s ease-in;
+
+    &.active {
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}

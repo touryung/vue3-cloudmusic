@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header />
-    <Sidebar />
+    <Sidebar :style="{ bottom: playerIsShow ? '70px' : '0' }" />
     <main
       class="main"
       :class="{ cover: isTabCover }"
@@ -18,6 +18,7 @@
       </div>
     </main>
     <router-view name="mvDetail" />
+    <Player />
   </div>
 </template>
 
@@ -27,8 +28,10 @@ import { useRouter, useRoute } from "vue-router";
 import Header from "@/layout/header/Header.vue";
 import Sidebar from "@/layout/sidebar/Sidebar.vue";
 import Tabs from "@/components/header-tabs/Index.vue";
+import Player from "@/layout/player/Index.vue";
 
 import { scrollTop } from "@/utils/animation";
+import { playerStore } from "@/store/modules/player";
 
 export default defineComponent({
   name: "Home",
@@ -36,12 +39,13 @@ export default defineComponent({
     Header,
     Sidebar,
     Tabs,
+    Player,
   },
   setup() {
     const router = useRouter();
     const route = useRoute();
 
-    const playerIsShow = ref<boolean>(false);
+    const playerIsShow = computed(() => playerStore.currentIndex !== -1);
     const tabList = [
       { content: "个性推荐", path: "/recommend" },
       { content: "歌单", path: "/playlist" },
@@ -76,7 +80,6 @@ export default defineComponent({
   position: fixed;
   top: $header-height;
   left: $sidebar-width;
-  bottom: $player-height;
   right: 0;
   z-index: -1;
   box-sizing: border-box;

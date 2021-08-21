@@ -99,3 +99,11 @@ export const SEARCH_TYPE = {
   playlists: { type: 1000, resName: "个歌单", limit: 20 },
   // users: { type: 1002, resName: "位用户", limit: 30 },
 };
+
+// 播放模式
+export enum MODE {
+  singleCycle, // 单曲循环
+  orderPlay, // 顺序播放
+  listLoop, // 歌单循环
+  randomPlay, // 随机播放
+}
