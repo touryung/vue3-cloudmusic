@@ -17,6 +17,8 @@ export const convertRankSongs = (res: AxiosResponse) => {
       name: track.name,
       picUrl: track.al.picUrl,
       artists: track.ar.map((item) => ({ id: item.id, name: item.name })),
+      album: { id: track.al.id, name: track.al.name },
+      duration: track.dt,
     });
   }
 };
