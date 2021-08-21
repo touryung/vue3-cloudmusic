@@ -15,6 +15,17 @@ export const debounce = function (func: any, delay: number) {
   };
 };
 
+export const throttle = function (func: any, delay: number) {
+  let timer = null;
+  return function (...args: any[]) {
+    if (timer) return;
+    timer = setTimeout(() => {
+      // @ts-ignore
+      func.apply(this, args);
+    }, delay);
+  };
+};
+
 /**
  * 数字转中文单位
  * @param count

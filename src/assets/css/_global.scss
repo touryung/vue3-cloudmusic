@@ -1,5 +1,9 @@
 @import url(../icon/iconfont.css);
 
+* {
+  user-select: none;
+}
+
 /* 基础样式 */
 a {
   text-decoration: none;
@@ -25,7 +29,7 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 10px;
 }
 

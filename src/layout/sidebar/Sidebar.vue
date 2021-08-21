@@ -60,13 +60,13 @@ export default defineComponent({
   position: fixed;
   top: $header-height;
   left: 0;
-  bottom: 0;
   width: $sidebar-width;
   padding: 10px;
   border-right: 1px solid #efefef;
   box-sizing: border-box;
   background: #fff;
   z-index: 10;
+  overflow: auto;
 
   .sidebar-menu {
     .sidebar-menu-item {

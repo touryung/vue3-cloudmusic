@@ -12,14 +12,13 @@ import store from "../index";
 class Playlist extends VuexModule {
   // 当前选中分类
   activeCategory = "";
-  // 当前精品歌单
-  currentHighQuality: PlayListItem[] = [];
-
   @Mutation
   changeActiveCategory(category: string) {
     this.activeCategory = category;
   }
 
+  // 当前精品歌单
+  currentHighQuality: PlayListItem[] = [];
   @Mutation
   changeHighQuality(list: PlayListItem[]) {
     this.currentHighQuality = list;

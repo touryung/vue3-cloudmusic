@@ -34,8 +34,7 @@ import { getRanksInfo } from "@/api/rank/index";
 interface RankInfo {
   officialRanks: CommonRank[];
   globalRanks: CommonRank[];
-  // @ts-ignore
-  singerRank: SingerRank | {};
+  singerRank: SingerRank;
 }
 
 export default defineComponent({
@@ -50,6 +49,7 @@ export default defineComponent({
     const rankData = reactive<RankInfo>({
       officialRanks: [],
       globalRanks: [],
+      // @ts-ignore
       singerRank: {},
     });
 

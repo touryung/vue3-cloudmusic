@@ -123,10 +123,10 @@ export default defineComponent({
         font-weight: 100;
       }
     }
+  }
 
-    &:hover {
-      background: #f1f2f3;
-    }
+  &:hover {
+    background: #f1f2f3;
   }
 }
 </style>

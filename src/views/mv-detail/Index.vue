@@ -225,7 +225,6 @@ export default defineComponent({
   background: #fff;
   overflow: auto;
   z-index: 50;
-  user-select: none;
 
   .detail-left {
     flex: 0 0 640px;
