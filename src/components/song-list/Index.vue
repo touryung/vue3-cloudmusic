@@ -12,7 +12,7 @@
       class="list-item"
       v-for="(item, index) in songs"
       :key="item.id"
-      @click="handlePlaySong(index)"
+      @dblclick="handlePlaySong(index)"
     >
       <span class="item-index">
         {{ (index + 1).toString().padStart(2, "0") }}
@@ -27,7 +27,11 @@
           <span v-if="item.alias" class="title-alias">({{ item.alias }})</span>
         </div>
         <i v-if="item.sq" class="iconfont icon-sq" />
-        <i v-if="item.mvId" class="iconfont icon-mv" />
+        <i
+          v-if="item.mvId"
+          class="iconfont icon-mv"
+          @click="handleShowMvDetail(item.mvId)"
+        />
       </div>
       <span class="item-singer" v-if="showTitle">
         <span v-for="(artist, index) in item.artists" :key="artist.id">
@@ -43,7 +47,9 @@
 </template>
 
 <script lang="ts">
+import { playerStore } from "@/store/modules/player";
 import { defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   props: {
@@ -56,11 +62,21 @@ export default defineComponent({
       default: true,
     },
   },
-  setup() {
-    const handlePlaySong = (index: number) => alert(index);
+  setup(props) {
+    const handlePlaySong = (index: number) => {
+      playerStore.changeCurrentSongQueue(props.songs as Song[]);
+      playerStore.changeCurrentIndex(index);
+    };
+
+    const router = useRouter();
+    const handleShowMvDetail = (id: number) => {
+      playerStore.changePlayStatus(false);
+      router.push(`/mv/${id}`);
+    };
 
     return {
       handlePlaySong,
+      handleShowMvDetail,
     };
   },
 });

@@ -3,7 +3,7 @@
     class="music-item"
     v-for="(song, index) in topSongs"
     :key="song.id"
-    @click="handlePlaySong(index)"
+    @dblclick="handlePlaySong(index)"
   >
     <span class="music-index">{{ (index + 1 + "").padStart(2, "0") }}</span>
     <div class="music-img">
@@ -20,7 +20,11 @@
         </span>
       </div>
       <i class="iconfont icon-sq" v-if="song.sq" />
-      <i class="iconfont icon-mv" v-if="song.mvId" />
+      <i
+        class="iconfont icon-mv"
+        v-if="song.mvId"
+        @click="handleShowMvDetail(song.mvId)"
+      />
     </div>
     <div class="music-singer">
       <span v-for="(artist, index) in song.artists" :key="artist.id">
@@ -33,7 +37,9 @@
 </template>
 
 <script lang="ts">
+import { playerStore } from "@/store/modules/player";
 import { defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   props: {
@@ -42,11 +48,21 @@ export default defineComponent({
       default: () => [],
     },
   },
-  setup() {
-    const handlePlaySong = (index: number) => alert(`播放歌曲${index}`);
+  setup(props) {
+    const handlePlaySong = (index: number) => {
+      playerStore.changeCurrentSongQueue(props.topSongs as Song[]);
+      playerStore.changeCurrentIndex(index);
+    };
+
+    const router = useRouter();
+    const handleShowMvDetail = (id: number) => {
+      playerStore.changePlayStatus(false);
+      router.push(`/mv/${id}`);
+    };
 
     return {
       handlePlaySong,
+      handleShowMvDetail,
     };
   },
 });

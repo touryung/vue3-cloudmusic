@@ -23,7 +23,7 @@
         class="list-item"
         v-for="(item, index) in officialRank.songs"
         :key="item.id"
-        @click="handlePlaySong(index)"
+        @dblclick="handlePlaySong(index)"
       >
         <div class="item-left">
           <span class="left-index" :class="index <= 2 ? 'top' : ''">
@@ -48,6 +48,7 @@
 </template>
 
 <script lang="ts">
+import { playerStore } from "@/store/modules/player";
 import { defineComponent, PropType } from "vue";
 import { useRouter } from "vue-router";
 
@@ -58,11 +59,17 @@ export default defineComponent({
       default: () => ({}),
     },
   },
-  setup() {
+  setup(props) {
     const router = useRouter();
 
-    const handlePlaySong = (index: number) => alert("播放歌曲" + index);
-    const handleShowDetail = () => alert("查看全部");
+    const handlePlaySong = (index: number) => {
+      playerStore.changeCurrentSongQueue(
+        (props.officialRank as CommonRank).songs
+      );
+      playerStore.changeCurrentIndex(index);
+    };
+    const handleShowDetail = () =>
+      router.push(`/playlist/${(props.officialRank as CommonRank).id}`);
 
     return {
       handlePlaySong,

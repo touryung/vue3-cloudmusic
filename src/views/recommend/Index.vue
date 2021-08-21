@@ -69,6 +69,8 @@ import OwnersendItem from "./components/OwnersendItem.vue";
 import NewMusicItem from "./components/NewMusicItem.vue";
 import MvlistItem from "@/components/mvlist-item/Index.vue";
 
+import { playerStore } from "@/store/modules/player";
+
 export default defineComponent({
   components: {
     Banners,
@@ -105,8 +107,12 @@ export default defineComponent({
     onMounted(() => init());
 
     const handleShowMore = (url: string) => router.push(url);
+
     const handlePlaySong = (index: number) => {
-      console.log(`播放最新音乐${index}`);
+      // 修改播放队列
+      playerStore.changeCurrentSongQueue(newMusicList.value);
+      // 修改队列中的索引
+      playerStore.changeCurrentIndex(index);
     };
 
     return {
