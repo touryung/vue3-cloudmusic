@@ -17,6 +17,7 @@ const createCallbackFn = (el: HTMLElement, binding: DirectiveBinding) => {
   return (e: MouseEvent) => {
     const target = e.target as Node;
 
+    // TODO: JSX 中绑定 arg 问题
     // v-outside:arg="fn" 或 v-outside="{ arg, fn }"
     const excludeDOM = binding.arg
       ? document.getElementById(binding.arg)
