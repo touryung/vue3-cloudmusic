@@ -1,3 +1,4 @@
+import { formatDuration } from "@/utils/utils";
 import { AxiosResponse } from "axios";
 
 export const convertLyrics = (res: AxiosResponse) => {
@@ -16,6 +17,25 @@ export const convertLyrics = (res: AxiosResponse) => {
       }
     })
     .filter(Boolean);
+};
+
+export const convertSimiSongs = (res: AxiosResponse) => {
+  const { songs } = res.data;
+  return songs.map((song: any) => ({
+    id: song.id,
+    name: song.name,
+    picUrl: song.album.picUrl,
+    alias: song.album.length ? song.alias.join("/") : "",
+    artists: song.artists.map((item: Artist) => ({
+      id: item.id,
+      name: item.name,
+    })),
+    album: { id: song.album.id, name: song.album.name },
+    sq: song.status === 0,
+    duration: song.duration,
+    durationStr: formatDuration(song.duration),
+    mvId: song.mvid,
+  }));
 };
 
 const computedTime = (timeStr: string) => {

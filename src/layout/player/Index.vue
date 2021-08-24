@@ -69,8 +69,9 @@ export default defineComponent({
           playerStore.changeCurrentSong(currentSongQueue[currentIndex]);
 
           playerStore.getSongLyricsData();
-          playerStore.getSongCommentInfoData();
           playerStore.changeCurrentLineNumber(0);
+          playerStore.getSongCommentInfoData();
+          playerStore.getSimiSongsData();
         } catch (e) {
           handleListLoop();
         }

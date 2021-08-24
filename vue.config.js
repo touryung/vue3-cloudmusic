@@ -17,7 +17,7 @@ module.exports = {
         localsConvention: "camelCaseOnly",
       },
     },
-    // css 模块文件名需要加 module
+    // css 模块文件名无需加 module
     requireModuleExtension: true,
   },
   configureWebpack: {

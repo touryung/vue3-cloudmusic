@@ -1,4 +1,8 @@
-import { getSongLyricsData, getSongCommentInfoData } from "@/api/player";
+import {
+  getSongLyricsData,
+  getSongCommentInfoData,
+  getSimiSongs,
+} from "@/api/player";
 import { MODE } from "@/utils/constant";
 import {
   VuexModule,
@@ -18,6 +22,7 @@ export interface CurrentSongCommentInfo {
   hotComments: Comment[];
   comments: Comment[];
   total: number;
+  pageCount: number;
 }
 
 @Module({ dynamic: true, namespaced: true, name: "player", store })
@@ -74,11 +79,6 @@ class Player extends VuexModule {
   changeLyrics(lyrics: Lyric[]) {
     this.lyrics = lyrics;
   }
-  @Action
-  async getSongLyricsData() {
-    const lyrics: Lyric[] = await getSongLyricsData(this.currentSong.id);
-    this.changeLyrics(lyrics);
-  }
   @Mutation
   changeCurrentLineNumber(no: number) {
     this.currentLineNumber = no;
@@ -87,12 +87,18 @@ class Player extends VuexModule {
   changeCurrentLyric(lyric: string) {
     this.currentLyric = lyric;
   }
+  @Action
+  async getSongLyricsData() {
+    const lyrics: Lyric[] = await getSongLyricsData(this.currentSong.id);
+    this.changeLyrics(lyrics);
+  }
 
   // 评论相关: 评论数组对象
   currentSongCommentInfo: CurrentSongCommentInfo = {
     hotComments: [],
     comments: [],
     total: 0,
+    pageCount: 0,
   };
   @Mutation
   changeCurrentSongCommentInfo(currentSongCommentInfo: CurrentSongCommentInfo) {
@@ -102,9 +108,19 @@ class Player extends VuexModule {
   async getSongCommentInfoData(currentPage = 1) {
     const currentSongCommentInfo: CurrentSongCommentInfo =
       await getSongCommentInfoData(this.currentSong.id, currentPage);
-    console.log(currentSongCommentInfo);
 
     this.changeCurrentSongCommentInfo(currentSongCommentInfo);
+  }
+
+  simiSongs: Song[] | null = null;
+  @Mutation
+  changeSimiSongs(songs: Song[]) {
+    this.simiSongs = songs;
+  }
+  @Action
+  async getSimiSongsData() {
+    const songs: Song[] = await getSimiSongs(this.currentSong.id);
+    this.changeSimiSongs(songs);
   }
 }
 
