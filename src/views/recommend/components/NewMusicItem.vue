@@ -16,7 +16,6 @@
           ({{ newMusicItem.alias }})
         </span>
       </div>
-      <!-- TODO: 解决一行显示问题 -->
       <div class="music-info">
         <span v-if="newMusicItem.sq" class="music-info-extra">SQ</span>
         <span v-if="newMusicItem.mvId !== 0" class="music-info-extra">MV</span>

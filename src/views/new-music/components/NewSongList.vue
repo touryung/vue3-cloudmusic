@@ -133,7 +133,7 @@ export default defineComponent({
 
   .music-singer,
   .music-album {
-    width: 320px;
+    width: 220px;
     height: 20px;
     line-height: 20px;
     margin-right: 10px;
@@ -142,7 +142,7 @@ export default defineComponent({
   }
 
   .music-duration {
-    flex: 0 0 100px;
+    flex: 0 0 50;
     text-align: right;
   }
 
