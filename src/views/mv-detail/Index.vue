@@ -121,7 +121,7 @@ import {
   RouteLocationNormalized,
 } from "vue-router";
 
-import CommentBox from "@/components/CommentBox.vue";
+import CommentBox from "@/components/comment-box/CommentBox.vue";
 import { scrollTop } from "@/utils/animation";
 
 export default defineComponent({

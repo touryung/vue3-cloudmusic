@@ -20,7 +20,7 @@
         class="list-item"
         v-for="(item, index) in singerRank.artists"
         :key="item.id"
-        @click="handlePlaySong(index)"
+        @click="handleShowSingerDetail(item.id)"
       >
         <div class="item-left">
           <span class="left-index" :class="index <= 2 ? 'top' : ''">
@@ -30,7 +30,7 @@
           <span>{{ item.name }}</span>
         </div>
       </div>
-      <span class="more" @click="handleShowDetail">
+      <span class="more" @click="handleShowMoreSinger">
         查看全部<i class="iconfont icon-right" />
       </span>
     </div>
@@ -51,12 +51,12 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
-    const handlePlaySong = (index: number) => alert("查看歌手" + index);
-    const handleShowDetail = () => alert("查看全部");
+    const handleShowSingerDetail = (id: number) => router.push(`/singer/${id}`);
+    const handleShowMoreSinger = () => router.push("/singer");
 
     return {
-      handlePlaySong,
-      handleShowDetail,
+      handleShowSingerDetail,
+      handleShowMoreSinger,
     };
   },
 });

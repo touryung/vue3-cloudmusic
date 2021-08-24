@@ -84,7 +84,7 @@ import {
 import { useRoute } from "vue-router";
 
 import SongList from "@/components/song-list/Index.vue";
-import CommentBox from "@/components/CommentBox.vue";
+import CommentBox from "@/components/comment-box/CommentBox.vue";
 
 export default defineComponent({
   components: {

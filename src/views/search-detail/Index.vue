@@ -127,6 +127,7 @@ import {
 } from "vue-router";
 
 import SongList from "@/components/song-list/Index.vue";
+import { playerStore } from "@/store/modules/player";
 
 export default defineComponent({
   components: {
@@ -188,7 +189,7 @@ export default defineComponent({
     });
 
     const handleShowDetail = (url: string, isStopPlayer?: boolean) => {
-      if (isStopPlayer) console.log("停止播放");
+      if (isStopPlayer) playerStore.changePlayStatus(false);
       router.push(url);
     };
 

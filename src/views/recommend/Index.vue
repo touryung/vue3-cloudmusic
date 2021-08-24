@@ -98,7 +98,7 @@ export default defineComponent({
         newMusicList.value = await getNewmusicData();
         mvList.value = await getMvlistData();
       } catch (e) {
-        console.error(e);
+        alert(e);
       }
 
       isLoading.value = false;
