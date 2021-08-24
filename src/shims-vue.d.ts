@@ -10,3 +10,6 @@ declare module "*.scss" {
   const style: any;
   export default style;
 }
+
+// 解决无法找到声明文件报错
+declare module "create-keyframe-animation";

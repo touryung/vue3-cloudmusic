@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "create-keyframe-animation": "^0.1.0",
     "swiper": "5.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
